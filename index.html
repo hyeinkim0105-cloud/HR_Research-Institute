@@ -4,255 +4,690 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HAM-EOL RESEARCH INSTITUTE</title>
+  <meta name="theme-color" content="#f4f3f0">
+  <title>곰개연구소 | GOMGAE RESEARCH INSTITUTE</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --green: #14251f;
-      --deep: #0c1713;
-      --panel: #1c3028;
-      --gold: #c4a76a;
-      --cream: #e9e3d5;
-      --muted: #9ba89f;
-      --line: rgba(196, 167, 106, 0.3);
+      --bg: #f4f3f0;
+      --white: #ffffff;
+      --light: #e9e8e4;
+      --gray: #a6a49e;
+      --text: #292825;
+      --muted: #77746e;
+      --brown: #796958;
+      --dark-brown: #51463d;
+      --line: #dedbd5;
+      --black: #22221f;
+      --mono: "DM Mono", monospace;
+      --sans: "Noto Sans KR", sans-serif;
     }
 
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
     }
 
     body {
-      background: var(--deep);
-      color: var(--cream);
-      font-family: 'Noto Sans KR', sans-serif;
-      min-height: 100vh;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font-family: inherit;
+      cursor: pointer;
     }
 
     .mono {
-      font-family: 'DM Mono', monospace;
+      font-family: var(--mono);
+      letter-spacing: .04em;
     }
 
+    .container {
+      width: min(1160px, 90%);
+      margin: 0 auto;
+    }
+
+    /* HEADER */
+
     header {
-      height: 76px;
-      padding: 0 8%;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,.96);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(12px);
+    }
+
+    .header-inner {
+      min-height: 76px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      border-bottom: 1px solid var(--line);
-      background: var(--green);
+      gap: 25px;
     }
 
-    .logo {
-      color: var(--gold);
-      font-family: 'DM Mono', monospace;
-      font-size: 17px;
-      letter-spacing: 2px;
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      background: var(--black);
+      color: white;
+      font-family: var(--mono);
+      font-size: 14px;
       font-weight: 500;
+    }
+
+    .brand-name {
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: -.04em;
+    }
+
+    .brand-sub {
+      font-family: var(--mono);
+      color: var(--muted);
+      font-size: 9px;
+      letter-spacing: .04em;
     }
 
     nav {
       display: flex;
-      gap: 32px;
+      align-items: center;
+      gap: 21px;
     }
 
     nav a {
+      font-family: var(--mono);
+      font-size: 10px;
       color: var(--muted);
-      text-decoration: none;
-      font-family: 'DM Mono', monospace;
-      font-size: 11px;
-      letter-spacing: 1px;
+      transition: .2s;
     }
 
     nav a:hover {
-      color: var(--gold);
+      color: var(--brown);
     }
+
+    .login-button {
+      border: 1px solid var(--black);
+      background: var(--black);
+      color: white;
+      padding: 10px 17px;
+      font-family: var(--mono);
+      font-size: 10px;
+      white-space: nowrap;
+      transition: .2s;
+    }
+
+    .login-button:hover {
+      background: var(--brown);
+      border-color: var(--brown);
+    }
+
+    /* HERO */
 
     .hero {
-      min-height: 600px;
-      padding: 100px 8%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      position: relative;
-      overflow: hidden;
-      background:
-        linear-gradient(90deg, rgba(12,23,19,0.98), rgba(12,23,19,0.75)),
-        repeating-linear-gradient(
-          0deg,
-          transparent,
-          transparent 49px,
-          rgba(196,167,106,0.05) 50px
-        );
+      background: var(--white);
+      padding: 110px 0 100px;
+      border-bottom: 1px solid var(--line);
     }
 
-    .classification {
-      color: var(--gold);
-      font-family: 'DM Mono', monospace;
+    .hero-label {
+      font-family: var(--mono);
       font-size: 11px;
-      letter-spacing: 3px;
-      margin-bottom: 30px;
+      color: var(--brown);
+      letter-spacing: .12em;
+      margin-bottom: 27px;
     }
 
     .hero h1 {
-      font-size: clamp(32px, 5vw, 58px);
-      font-weight: 400;
-      line-height: 1.5;
-      letter-spacing: -2px;
-      margin-bottom: 24px;
+      font-size: clamp(38px, 6vw, 76px);
+      letter-spacing: -.07em;
+      line-height: 1.2;
+      font-weight: 600;
+      margin-bottom: 22px;
     }
 
     .hero h1 span {
-      color: var(--gold);
+      display: block;
+      color: var(--brown);
     }
 
-    .hero p {
+    .hero-description {
+      font-size: 15px;
       color: var(--muted);
-      font-size: 14px;
       line-height: 2;
-      font-weight: 300;
+      max-width: 600px;
+    }
+
+    .hero-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 65px;
+      padding-top: 22px;
+      border-top: 1px solid var(--line);
+      gap: 20px;
+    }
+
+    .hero-bottom p {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--muted);
     }
 
     .status {
       display: flex;
       align-items: center;
-      gap: 10px;
-      margin-top: 42px;
-      color: #a5b8a8;
-      font-family: 'DM Mono', monospace;
+      gap: 8px;
+      font-family: var(--mono);
       font-size: 10px;
-      letter-spacing: 1px;
     }
 
-    .dot {
+    .status-dot {
       width: 7px;
       height: 7px;
-      background: #8cae83;
       border-radius: 50%;
-      box-shadow: 0 0 10px #8cae83;
+      background: #71846d;
     }
 
-    .access-section {
-      padding: 70px 8%;
-      background: var(--green);
-      border-top: 1px solid var(--line);
+    /* COMMON SECTION */
+
+    section {
+      padding: 90px 0;
       border-bottom: 1px solid var(--line);
     }
 
-    .section-label {
-      color: var(--gold);
-      font-family: 'DM Mono', monospace;
-      font-size: 11px;
-      letter-spacing: 2px;
-      margin-bottom: 24px;
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 20px;
+      margin-bottom: 40px;
     }
 
-    .access-panel {
+    .section-number {
+      font-family: var(--mono);
+      color: var(--brown);
+      font-size: 11px;
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      font-size: 30px;
+      font-weight: 600;
+      letter-spacing: -.06em;
+    }
+
+    .section-subtitle {
+      font-family: var(--mono);
+      color: var(--muted);
+      font-size: 10px;
+      margin-top: 5px;
+    }
+
+    .more-link {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--brown);
+      border-bottom: 1px solid var(--brown);
+      padding-bottom: 4px;
+    }
+
+    /* ABOUT */
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 65px;
+    }
+
+    .about-quote {
+      font-size: 27px;
+      line-height: 1.65;
+      font-weight: 500;
+      letter-spacing: -.06em;
+    }
+
+    .about-quote span {
+      color: var(--brown);
+    }
+
+    .about-text {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 2.1;
+    }
+
+    .research-areas {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      margin-top: 50px;
       border: 1px solid var(--line);
-      padding: 40px;
+      background: var(--white);
+    }
+
+    .area {
+      padding: 23px 18px;
+      border-right: 1px solid var(--line);
+    }
+
+    .area:last-child {
+      border-right: none;
+    }
+
+    .area strong {
+      display: block;
+      font-size: 13px;
+      margin-bottom: 7px;
+    }
+
+    .area span {
+      font-family: var(--mono);
+      font-size: 9px;
+      color: var(--muted);
+    }
+
+    /* LOCATION */
+
+    .location-card {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      background: var(--white);
+      border: 1px solid var(--line);
+    }
+
+    .map-placeholder {
+      min-height: 300px;
+      background-color: #e9e8e4;
+      background-image:
+        linear-gradient(30deg, transparent 48%, rgba(121,105,88,.13) 49%, rgba(121,105,88,.13) 50%, transparent 51%),
+        linear-gradient(120deg, transparent 48%, rgba(121,105,88,.12) 49%, rgba(121,105,88,.12) 50%, transparent 51%);
+      background-size: 75px 75px;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .map-pin {
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    .map-placeholder p {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--brown);
+    }
+
+    .location-info {
+      padding: 42px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .location-info h3 {
+      font-size: 23px;
+      margin: 14px 0;
+      letter-spacing: -.05em;
+    }
+
+    .location-info p {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 2;
+    }
+
+    .temporary {
+      display: inline-block;
+      width: fit-content;
+      margin-top: 17px;
+      padding: 5px 9px;
+      background: #eeeae3;
+      color: var(--brown);
+      font-family: var(--mono);
+      font-size: 9px;
+    }
+
+    .map-link {
+      display: inline-block;
+      width: fit-content;
+      margin-top: 23px;
+      padding: 11px 16px;
+      background: var(--black);
+      color: white;
+      font-family: var(--mono);
+      font-size: 10px;
+    }
+
+    /* SUBJECTS */
+
+    .subject-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+    }
+
+    .subject-card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      overflow: hidden;
+    }
+
+    .subject-visual {
+      height: 220px;
+      background: #e6e4df;
+      display: grid;
+      place-items: center;
+      color: #8a847b;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .1em;
+    }
+
+    .subject-info {
+      padding: 27px;
+    }
+
+    .subject-number {
+      color: var(--brown);
+      font-family: var(--mono);
+      font-size: 10px;
+    }
+
+    .subject-info h3 {
+      font-size: 26px;
+      margin: 8px 0 3px;
+      letter-spacing: -.04em;
+    }
+
+    .subject-info p {
+      font-family: var(--mono);
+      color: var(--muted);
+      font-size: 10px;
+    }
+
+    /* MEMBER PORTAL */
+
+    .portal {
+      background: #eae8e3;
+    }
+
+    .portal-intro {
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: -22px;
+      margin-bottom: 30px;
+    }
+
+    .portal-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .portal-card {
+      display: block;
+      background: var(--white);
+      border: 1px solid var(--line);
+      padding: 27px;
+      transition: .2s;
+    }
+
+    .portal-card:hover {
+      border-color: var(--brown);
+      transform: translateY(-3px);
+    }
+
+    .portal-card .num {
+      font-family: var(--mono);
+      color: var(--brown);
+      font-size: 10px;
+    }
+
+    .portal-card h3 {
+      font-size: 17px;
+      margin: 15px 0 5px;
+    }
+
+    .portal-card p {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .lock {
+      float: right;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    /* CONFERENCE */
+
+    .conference-list {
+      border-top: 1px solid var(--line);
+    }
+
+    .program {
+      background: var(--white);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .program summary {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 21px;
+      cursor: pointer;
+    }
+
+    .program summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .program-no {
+      font-family: var(--mono);
+      color: var(--brown);
+      font-size: 11px;
+    }
+
+    .program-name {
+      flex: 1;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .program-icon {
+      color: var(--brown);
+      font-size: 18px;
+    }
+
+    .program-detail {
+      padding: 0 21px 24px 60px;
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 2;
+    }
+
+    .break-label {
+      padding: 12px 20px;
+      background: #eae8e3;
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: .12em;
+    }
+
+    /* LOGIN */
+
+    .login-section {
+      background: var(--black);
+      color: white;
+      padding: 75px 0;
+    }
+
+    .login-inner {
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: 30px;
-      background: rgba(255,255,255,0.015);
     }
 
-    .access-panel h2 {
+    .login-inner h2 {
+      font-size: 27px;
+      margin: 12px 0;
+      letter-spacing: -.05em;
+    }
+
+    .login-inner p {
+      color: #b7b4ad;
+      font-size: 13px;
+    }
+
+    .login-inner .login-button {
+      background: white;
+      border-color: white;
+      color: var(--black);
+    }
+
+    /* FOOTER */
+
+    footer {
+      background: var(--bg);
+      padding: 40px 0;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 20px;
+    }
+
+    .footer-name {
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .footer-copy {
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: 9px;
+      line-height: 2;
+      margin-top: 9px;
+    }
+
+    /* LOGIN MODAL */
+
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(0,0,0,.65);
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .modal.active {
+      display: flex;
+    }
+
+    .modal-box {
+      width: min(420px, 100%);
+      background: var(--white);
+      padding: 35px;
+      position: relative;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 14px;
+      right: 17px;
+      background: none;
+      border: none;
+      font-size: 22px;
+      color: var(--muted);
+    }
+
+    .modal-box h2 {
       font-size: 23px;
-      font-weight: 400;
-      margin-bottom: 12px;
+      margin: 10px 0;
     }
 
-    .access-panel p {
+    .modal-box > p {
       color: var(--muted);
       font-size: 12px;
+      margin-bottom: 25px;
+    }
+
+    .modal-box label {
+      display: block;
+      font-size: 11px;
+      margin: 15px 0 6px;
+    }
+
+    .modal-box input {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid var(--line);
+      font-family: var(--sans);
+      outline: none;
+    }
+
+    .modal-box input:focus {
+      border-color: var(--brown);
+    }
+
+    .modal-submit {
+      width: 100%;
+      padding: 13px;
+      margin-top: 22px;
+      border: none;
+      background: var(--black);
+      color: white;
+      font-family: var(--mono);
+      font-size: 11px;
+    }
+
+    .modal-notice {
+      margin-top: 15px;
+      font-size: 10px;
+      color: var(--muted);
       line-height: 1.8;
     }
 
-    .access-button {
-      border: 1px solid var(--gold);
-      background: transparent;
-      color: var(--gold);
-      padding: 16px 25px;
-      font-family: 'DM Mono', monospace;
-      font-size: 11px;
-      letter-spacing: 1px;
-      cursor: pointer;
-      white-space: nowrap;
-      transition: 0.3s;
-    }
+    /* RESPONSIVE */
 
-    .access-button:hover {
-      background: var(--gold);
-      color: var(--deep);
-    }
-
-    .subjects {
-      padding: 80px 8%;
-    }
-
-    .subject-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-      margin-top: 30px;
-    }
-
-    .subject-card {
-      min-height: 220px;
-      border: 1px solid var(--line);
-      padding: 30px;
-      background: var(--panel);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .subject-number {
-      color: var(--gold);
-      font-family: 'DM Mono', monospace;
-      font-size: 11px;
-    }
-
-    .subject-card h3 {
-      font-family: 'DM Mono', monospace;
-      font-size: 25px;
-      font-weight: 400;
-      letter-spacing: 2px;
-      margin-bottom: 10px;
-    }
-
-    .subject-card p {
-      color: var(--muted);
-      font-size: 11px;
-    }
-
-    footer {
-      border-top: 1px solid var(--line);
-      padding: 30px 8%;
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
-      color: var(--muted);
-      font-family: 'DM Mono', monospace;
-      font-size: 9px;
-      letter-spacing: 1px;
-    }
-
-    @media (max-width: 650px) {
-      header {
-        padding: 0 5%;
-      }
-
-      .logo {
-        font-size: 12px;
-      }
-
+    @media (max-width: 900px) {
       nav {
         gap: 12px;
       }
@@ -261,27 +696,99 @@
         font-size: 9px;
       }
 
+      .about-grid {
+        gap: 30px;
+      }
+
+      .portal-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 650px) {
+      .header-inner {
+        flex-wrap: wrap;
+        padding: 13px 0;
+        gap: 12px;
+      }
+
+      .brand {
+        flex: 1;
+      }
+
+      nav {
+        order: 3;
+        width: 100%;
+        overflow-x: auto;
+        padding: 10px 0 3px;
+        gap: 19px;
+      }
+
+      nav a {
+        white-space: nowrap;
+      }
+
       .hero {
-        padding: 80px 7%;
-        min-height: 500px;
+        padding: 75px 0 65px;
       }
 
-      .access-section,
-      .subjects {
-        padding: 55px 7%;
-      }
-
-      .access-panel {
-        flex-direction: column;
+      .hero-bottom {
         align-items: flex-start;
-        padding: 28px;
+        flex-direction: column;
+      }
+
+      section {
+        padding: 65px 0;
+      }
+
+      .section-title {
+        font-size: 25px;
+      }
+
+      .about-grid,
+      .location-card {
+        grid-template-columns: 1fr;
+      }
+
+      .about-quote {
+        font-size: 23px;
+      }
+
+      .research-areas {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .area:nth-child(2) {
+        border-right: none;
+      }
+
+      .area:nth-child(-n+2) {
+        border-bottom: 1px solid var(--line);
       }
 
       .subject-grid {
         grid-template-columns: 1fr;
       }
 
-      footer {
+      .portal-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .location-info {
+        padding: 27px;
+      }
+
+      .map-placeholder {
+        min-height: 220px;
+      }
+
+      .login-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .footer-inner {
+        align-items: flex-start;
         flex-direction: column;
       }
     }
@@ -290,94 +797,548 @@
 
 <body>
 
-  <header>
-    <div class="logo">H.E.R.I.</div>
+  <!-- HEADER -->
 
-    <nav>
-      <a href="#about">ABOUT</a>
-      <a href="#subjects">SUBJECTS</a>
-      <a href="#access">ACCESS</a>
-    </nav>
+  <header>
+    <div class="container header-inner">
+
+      <a href="#home" class="brand">
+        <div class="brand-mark">GRI</div>
+        <div>
+          <div class="brand-name">곰개연구소</div>
+          <div class="brand-sub">GOMGAE RESEARCH INSTITUTE</div>
+        </div>
+      </a>
+
+      <nav>
+        <a href="#about">ABOUT</a>
+        <a href="#location">LOCATION</a>
+        <a href="#subjects">SUBJECTS</a>
+        <a href="#portal">RESEARCH</a>
+      </nav>
+
+      <button class="login-button" onclick="openLogin()">
+        RESEARCHER LOGIN
+      </button>
+
+    </div>
   </header>
 
+
+  <!-- HOME -->
+
   <main>
-    <section class="hero" id="about">
-      <div class="classification">
-        CLASSIFIED DOCUMENT / LEVEL 03
-      </div>
 
-      <h1>
-        관계성을 연구하고<br>
-        <span>기록하는 공간.</span>
-      </h1>
+    <section class="hero" id="home">
+      <div class="container">
 
-      <p>
-        HAM-EOL RESEARCH INSTITUTE<br>
-        두 개의 개체, 하나의 관계.<br>
-        관찰하고, 수집하고, 기록한다.
-      </p>
+        <div class="hero-label">
+          GOMGAE RESEARCH INSTITUTE · EST. 2026
+        </div>
 
-      <div class="status">
-        <span class="dot"></span>
-        SYSTEM ONLINE
+        <h1>
+          곰개연구소
+          <span>관계의 모든 순간을 연구하다.</span>
+        </h1>
+
+        <p class="hero-description">
+          두 개의 개체를 둘러싼 다양한 현상과 관계적 특성을 관찰하고,
+          수집하고, 분석하고 기록합니다.
+          <br>
+          사소한 순간에도 연구할 가치는 존재합니다.
+        </p>
+
+        <div class="hero-bottom">
+          <p>OFFICIAL RESEARCH INSTITUTE WEBSITE</p>
+
+          <div class="status">
+            <span class="status-dot"></span>
+            SYSTEM ONLINE
+          </div>
+        </div>
+
       </div>
     </section>
 
-    <section class="access-section" id="access">
-      <div class="section-label">01 / RESTRICTED AREA</div>
 
-      <div class="access-panel">
+    <!-- ABOUT -->
+
+    <section id="about">
+      <div class="container">
+
+        <div class="section-heading">
+          <div>
+            <div class="section-number">01 / ABOUT</div>
+            <h2 class="section-title">연구소 소개</h2>
+            <p class="section-subtitle">INTRODUCTION TO THE INSTITUTE</p>
+          </div>
+        </div>
+
+        <div class="about-grid">
+
+          <div class="about-quote">
+            관계의 모든 순간을
+            <span>연구하다.</span>
+          </div>
+
+          <div class="about-text">
+            곰개연구소는 두 개의 개체 사이에서 나타나는 관계적 특성과
+            상호작용을 종합적으로 연구하는 기관입니다.
+            <br><br>
+            일상 속에서 관찰되는 다양한 행동과 순간에 주목하며,
+            이를 지속적으로 수집하고 기록합니다.
+            <br><br>
+            관계성 연구, 행동 관찰, 자료 분석 및 연구원 간의 공동 토론을
+            통해 다양한 관점에서 연구 대상을 탐구합니다.
+            <br><br>
+            작은 행동 하나도 놓치지 않고,
+            의미 있는 순간은 반드시 기록합니다.
+          </div>
+
+        </div>
+
+        <div class="research-areas">
+
+          <div class="area">
+            <strong>관계성 연구</strong>
+            <span>RELATIONSHIP STUDY</span>
+          </div>
+
+          <div class="area">
+            <strong>행동 관찰</strong>
+            <span>BEHAVIOR OBSERVATION</span>
+          </div>
+
+          <div class="area">
+            <strong>자료 수집</strong>
+            <span>DATA COLLECTION</span>
+          </div>
+
+          <div class="area">
+            <strong>정보 분석</strong>
+            <span>DATA ANALYSIS</span>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- LOCATION -->
+
+    <section id="location">
+      <div class="container">
+
+        <div class="section-heading">
+          <div>
+            <div class="section-number">02 / LOCATION</div>
+            <h2 class="section-title">연구소 위치</h2>
+            <p class="section-subtitle">RESEARCH FACILITY</p>
+          </div>
+        </div>
+
+        <div class="location-card">
+
+          <div class="map-placeholder">
+            <div>
+              <div class="map-pin">⌖</div>
+              <p>RESEARCH FACILITY LOCATION</p>
+              <p>SEOUL · KOREA</p>
+            </div>
+          </div>
+
+          <div class="location-info">
+
+            <div class="section-number">FACILITY INFORMATION</div>
+
+            <h3>곰개연구소 연구 시설</h3>
+
+            <p>
+              서울특별시 중구 을지로 일대
+              <br>
+              연구 시설의 정확한 위치는 추후 확정됩니다.
+            </p>
+
+            <span class="temporary">TEMPORARY LOCATION</span>
+
+            <a
+              class="map-link"
+              href="https://map.naver.com/p/search/동대문역사문화공원"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              NAVER MAP ↗
+            </a>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- SUBJECTS -->
+
+    <section id="subjects">
+      <div class="container">
+
+        <div class="section-heading">
+          <div>
+            <div class="section-number">03 / SUBJECTS</div>
+            <h2 class="section-title">연구 대상</h2>
+            <p class="section-subtitle">RESEARCH SUBJECTS</p>
+          </div>
+        </div>
+
+        <div class="subject-grid">
+
+          <article class="subject-card">
+
+            <div class="subject-visual">
+              SUBJECT IMAGE 001
+            </div>
+
+            <div class="subject-info">
+              <div class="subject-number">SUBJECT 001</div>
+              <h3>SUNGJIN</h3>
+              <p>RESEARCH SUBJECT A</p>
+            </div>
+
+          </article>
+
+          <article class="subject-card">
+
+            <div class="subject-visual">
+              SUBJECT IMAGE 002
+            </div>
+
+            <div class="subject-info">
+              <div class="subject-number">SUBJECT 002</div>
+              <h3>DOWOON</h3>
+              <p>RESEARCH SUBJECT B</p>
+            </div>
+
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- RESEARCHER PORTAL -->
+
+    <section class="portal" id="portal">
+
+      <div class="container">
+
+        <div class="section-heading">
+          <div>
+            <div class="section-number">04 / RESEARCHER PORTAL</div>
+            <h2 class="section-title">연구원 전용 공간</h2>
+            <p class="section-subtitle">RESTRICTED ACCESS</p>
+          </div>
+        </div>
+
+        <p class="portal-intro">
+          본 공간은 인증된 연구원만 이용할 수 있습니다.
+          로그인이 필요합니다.
+        </p>
+
+        <div class="portal-grid">
+
+          <a href="#" class="portal-card" onclick="return portalNotice(event)">
+            <span class="lock">LOCKED</span>
+            <div class="num">01 / ARCHIVE</div>
+            <h3>연구 자료실</h3>
+            <p>사진, 영상 및 연구 자료 열람</p>
+          </a>
+
+          <a href="#" class="portal-card" onclick="return portalNotice(event)">
+            <span class="lock">LOCKED</span>
+            <div class="num">02 / CONFERENCE</div>
+            <h3>연구 보고회</h3>
+            <p>연구 활동 및 프로그램 기록</p>
+          </a>
+
+          <a href="#" class="portal-card" onclick="return portalNotice(event)">
+            <span class="lock">LOCKED</span>
+            <div class="num">03 / COMMUNITY</div>
+            <h3>연구원 게시판</h3>
+            <p>연구원 간 토론 및 자유로운 소통</p>
+          </a>
+
+          <a href="#" class="portal-card" onclick="return portalNotice(event)">
+            <span class="lock">LOCKED</span>
+            <div class="num">04 / RESEARCH LOG</div>
+            <h3>연구원 방명록</h3>
+            <p>방문 기록 및 연구원 댓글</p>
+          </a>
+
+          <a href="#" class="portal-card" onclick="return portalNotice(event)">
+            <span class="lock">LOCKED</span>
+            <div class="num">05 / MY PAGE</div>
+            <h3>마이페이지</h3>
+            <p>개인 연구원 정보 및 계정 관리</p>
+          </a>
+
+          <a href="#" class="portal-card" onclick="return portalNotice(event)">
+            <span class="lock">LOCKED</span>
+            <div class="num">06 / NOTICE</div>
+            <h3>연구소 공지사항</h3>
+            <p>연구소의 주요 안내 및 공지</p>
+          </a>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- CONFERENCE PREVIEW -->
+
+    <section id="conference">
+      <div class="container">
+
+        <div class="section-heading">
+          <div>
+            <div class="section-number">05 / CONFERENCE</div>
+            <h2 class="section-title">제1차 곰개 관계성 연구 보고회</h2>
+            <p class="section-subtitle">
+              1ST HAM-EOL RELATIONSHIP RESEARCH CONFERENCE
+            </p>
+          </div>
+        </div>
+
+        <div class="conference-list">
+
+          <details class="program">
+            <summary>
+              <span class="program-no">01</span>
+              <span class="program-name">연구원 적성검사</span>
+              <span class="program-icon">＋</span>
+            </summary>
+            <div class="program-detail">
+              햄얼 모의고사를 통해 연구원들의 기본적인 관계성 이해도와
+              연구 적성을 확인하는 프로그램입니다.
+            </div>
+          </details>
+
+          <details class="program">
+            <summary>
+              <span class="program-no">02</span>
+              <span class="program-name">미확인 정보 추론 발표</span>
+              <span class="program-icon">＋</span>
+            </summary>
+            <div class="program-detail">
+              크롭된 사진 속 단서를 바탕으로 미확인 정보를 추론하고,
+              연구원들의 분석 결과를 공유합니다.
+            </div>
+          </details>
+
+          <div class="break-label">RESEARCH BREAK</div>
+
+          <details class="program">
+            <summary>
+              <span class="program-no">03</span>
+              <span class="program-name">곰개 관계성 심층분석 실험</span>
+              <span class="program-icon">＋</span>
+            </summary>
+            <div class="program-detail">
+              토론과 밸런스게임을 통해 연구 대상의 관계적 특성을
+              다각도로 분석합니다.
+            </div>
+          </details>
+
+          <div class="break-label">RESEARCH BREAK</div>
+
+          <details class="program">
+            <summary>
+              <span class="program-no">04</span>
+              <span class="program-name">햄얼 이상행동 확률 추론</span>
+              <span class="program-icon">＋</span>
+            </summary>
+            <div class="program-detail">
+              빙고 형식의 활동을 통해 다양한 관찰 사례를 확인하고
+              연구원들의 추론을 공유합니다.
+            </div>
+          </details>
+
+          <details class="program">
+            <summary>
+              <span class="program-no">05</span>
+              <span class="program-name">제1차 곰개 관계성 연구 결과 발표</span>
+              <span class="program-icon">＋</span>
+            </summary>
+            <div class="program-detail">
+              각 프로그램의 결과를 종합하고 연구 보고회를 마무리합니다.
+            </div>
+          </details>
+
+        </div>
+
+        <p style="font-size:11px;color:#77746e;margin-top:15px;">
+          ※ 프로그램 설명은 기획 단계의 예시이며 추후 수정할 수 있습니다.
+        </p>
+
+      </div>
+    </section>
+
+
+    <!-- LOGIN BANNER -->
+
+    <section class="login-section">
+      <div class="container login-inner">
+
         <div>
-          <h2>연구원 전용 열람 구역</h2>
+          <div class="mono" style="font-size:10px;color:#b9a58e;">
+            RESEARCHER ACCESS SYSTEM
+          </div>
+
+          <h2>연구원 전용 시스템</h2>
+
           <p>
-            본 연구소의 자료는 승인된 연구원에게만 공개됩니다.<br>
-            등록되지 않은 사용자는 접근할 수 없습니다.
+            인증된 연구원은 로그인 후 내부 자료와 연구 기록을 열람할 수 있습니다.
           </p>
         </div>
 
-        <button class="access-button" onclick="loginNotice()">
-          RESEARCHER ACCESS →
+        <button class="login-button" onclick="openLogin()">
+          ACCESS PORTAL →
         </button>
+
       </div>
     </section>
 
-    <section class="subjects" id="subjects">
-      <div class="section-label">02 / RESEARCH SUBJECTS</div>
-
-      <div class="subject-grid">
-        <div class="subject-card">
-          <div class="subject-number">SUBJECT 001</div>
-          <div>
-            <h3>SUNGJIN</h3>
-            <p>RESEARCH SUBJECT A</p>
-          </div>
-        </div>
-
-        <div class="subject-card">
-          <div class="subject-number">SUBJECT 002</div>
-          <div>
-            <h3>DOWOON</h3>
-            <p>RESEARCH SUBJECT B</p>
-          </div>
-        </div>
-      </div>
-    </section>
   </main>
 
+
+  <!-- FOOTER -->
+
   <footer>
-    <span>HAM-EOL RESEARCH INSTITUTE</span>
-    <span>ALL RIGHTS RESERVED.</span>
-    <span>EST. 2026</span>
+    <div class="container footer-inner">
+
+      <div>
+        <div class="footer-name">곰개연구소</div>
+        <div class="footer-copy">
+          GOMGAE RESEARCH INSTITUTE
+          <br>
+          관계의 모든 순간을 연구하다.
+          <br>
+          EST. 2026
+        </div>
+      </div>
+
+      <div class="footer-copy">
+        OFFICIAL WEBSITE
+        <br>
+        ALL RIGHTS RESERVED.
+      </div>
+
+    </div>
   </footer>
 
+
+  <!-- LOGIN MODAL -->
+
+  <div class="modal" id="loginModal" onclick="closeOutside(event)">
+
+    <div class="modal-box">
+
+      <button class="modal-close" onclick="closeLogin()">×</button>
+
+      <div class="mono" style="font-size:10px;color:#796958;">
+        GRI / RESEARCHER AUTHENTICATION
+      </div>
+
+      <h2>연구원 로그인</h2>
+
+      <p>
+        곰개연구소에 등록된 연구원 계정으로 접속해 주세요.
+      </p>
+
+      <form onsubmit="loginNotice(event)">
+
+        <label for="username">RESEARCHER ID</label>
+        <input
+          type="text"
+          id="username"
+          placeholder="아이디 입력"
+          autocomplete="username"
+          required
+        >
+
+        <label for="password">PASSWORD</label>
+        <input
+          type="password"
+          id="password"
+          placeholder="비밀번호 입력"
+          autocomplete="current-password"
+          required
+        >
+
+        <button type="submit" class="modal-submit">
+          SIGN IN
+        </button>
+
+      </form>
+
+      <div class="modal-notice">
+        본 시스템은 연구원 전용입니다.
+        <br>
+        계정은 관리자를 통해 발급받을 수 있습니다.
+        <br><br>
+        ※ 로그인 인증 기능은 현재 연결 준비 중입니다.
+      </div>
+
+    </div>
+
+  </div>
+
+
   <script>
-    function loginNotice() {
+    function openLogin() {
+      document.getElementById("loginModal").classList.add("active");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeLogin() {
+      document.getElementById("loginModal").classList.remove("active");
+      document.body.style.overflow = "";
+    }
+
+    function closeOutside(event) {
+      if (event.target.id === "loginModal") {
+        closeLogin();
+      }
+    }
+
+    function loginNotice(event) {
+      event.preventDefault();
+
       alert(
-        "ACCESS RESTRICTED\n\n" +
-        "연구원 인증 시스템을 준비 중입니다.\n" +
-        "AUTHORIZED PERSONNEL ONLY."
+        "현재 로그인 시스템은 연결 준비 중입니다.\n" +
+        "Supabase 인증 기능이 연결된 후 이용할 수 있습니다."
       );
     }
+
+    function portalNotice(event) {
+      event.preventDefault();
+
+      alert(
+        "연구원 전용 메뉴입니다.\n" +
+        "로그인 시스템 연결 후 이용할 수 있습니다."
+      );
+
+      return false;
+    }
+
+    document.querySelectorAll(".program").forEach(function(item) {
+      item.addEventListener("toggle", function() {
+        const icon = item.querySelector(".program-icon");
+        icon.textContent = item.open ? "－" : "＋";
+      });
+    });
   </script>
 
 </body>
